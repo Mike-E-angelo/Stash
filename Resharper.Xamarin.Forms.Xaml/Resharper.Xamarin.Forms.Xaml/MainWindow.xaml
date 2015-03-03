@@ -1,8 +1,14 @@
 ﻿<Window x:Class="Resharper.Xamarin.Forms.Xaml.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid Tag="{Binding Tag, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
-        
-    </Grid>
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:system="clr-namespace:System;assembly=mscorlib"
+		Title="MainWindow" Height="350" Width="525">
+	<Window.Resources>
+		<x:Array x:Key="NewArray" Type="system:Int32">
+			<system:Int32>1</system:Int32>
+		</x:Array>
+	</Window.Resources>
+	<Grid Tag="{Binding Tag, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+		
+	</Grid>
 </Window>
