@@ -40,6 +40,9 @@
     <Compile Include="AContentPage.xaml.cs">
       <DependentUpon>AContentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AWorkingContentPage.xaml.cs">
+      <DependentUpon>AWorkingContentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AWorkingContentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -11,7 +11,8 @@ namespace WpfApplication1
 	{
 		protected override void OnStartup( StartupEventArgs e )
 		{
-			var page = new AContentPage();
+			var working = new AWorkingContentPage();
+			var breaks = new AContentPage();
 
 			base.OnStartup( e );
 		}
