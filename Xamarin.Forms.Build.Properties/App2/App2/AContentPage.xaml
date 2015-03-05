@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:app2="clr-namespace:App2;assembly=App2"
+			 x:Class="App2.AContentPage">
+	<app2:AContentPage.SomePropertyThatDoesNotExist>
+		<x:String>Should Not Compile!</x:String>
+	</app2:AContentPage.SomePropertyThatDoesNotExist>
+	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+</ContentPage>
