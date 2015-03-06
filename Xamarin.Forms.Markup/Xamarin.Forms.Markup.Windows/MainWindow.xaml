@@ -1,0 +1,13 @@
+﻿<Window x:Class="Xamarin.Forms.Markup.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:windows="clr-namespace:Xamarin.Forms.Markup.Windows"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid DataContext="{Binding Source={x:Reference Reference}}" >
+        <ContentControl x:Name="ContentControl">
+			<windows:Container>
+				<windows:StringExtension x:Name="Reference" />
+			</windows:Container>
+		</ContentControl>
+    </Grid>
+</Window>
