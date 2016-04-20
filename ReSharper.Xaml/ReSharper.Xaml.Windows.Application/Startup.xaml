@@ -1,0 +1,5 @@
+﻿<windows:Startup x:TypeArguments="application:Application" x:Class="ReSharper.Xaml.Windows.Application.Startup"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:windows="clr-namespace:ReSharper.Xaml.Windows;assembly=ReSharper.Xaml.Windows"
+	xmlns:application="clr-namespace:ReSharper.Xaml.Windows.Application" />

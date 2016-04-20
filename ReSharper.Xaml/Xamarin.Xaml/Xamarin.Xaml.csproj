@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{3F358953-AAA2-4A95-837B-E92F7C6CC7CE}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Xamarin.Forms.Loader</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <WarningLevel>4</WarningLevel>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile49</TargetFrameworkProfile>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Xamarin.Xaml</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Xml.ReaderWriter" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.Reflection" />
+    <Reference Include="System.IO" />
+    <Reference Include="System.Text.RegularExpressions" />
+    <Reference Include="System.Linq" />
+    <Reference Include="System.Diagnostics.Debug" />
+    <Reference Include="System.Runtime.Extensions" />
+    <Reference Include="System.Reflection.Extensions" />
+    <Reference Include="System.Globalization" />
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.1.4.1.6347-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IStreamProvider.cs" />
+    <Compile Include="Parsing\Visitors\EndInitializationVisitor.cs" />
+    <Compile Include="Parsing\Visitors\ProcessMarkupCompatibility.cs" />
+    <Compile Include="Parsing\Visitors\RemoveIgnorablesVisitor.cs" />
+    <Compile Include="Services.cs" />
+    <Compile Include="Services\IContentPropertyService.cs" />
+    <Compile Include="Services\IObjectBuilderService.cs" />
+    <Compile Include="Services\IPropertyValueSetterService.cs" />
+    <Compile Include="Services\ISupportInitializeService.cs" />
+    <Compile Include="Services\ISupportPropertyInitializeService.cs" />
+    <Compile Include="Services\ITypeConversionService.cs" />
+    <Compile Include="Services\IAttributeParser.cs" />
+    <Compile Include="Parsing\IParsingRule.cs" />
+    <Compile Include="Parsing\INodeBuilder.cs" />
+    <Compile Include="Parsing\INodeHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Parsing\Visitors\ApplyPropertiesVisitor.cs" />
+    <Compile Include="Markup\ArrayExtension.cs" />
+    <Compile Include="Parsing\BaseNode.cs" />
+    <Compile Include="Markup\BindingExtension.cs" />
+    <Compile Include="Parsing\Visitors\CreateValuesVisitor.cs" />
+    <Compile Include="Markup\DynamicResourceExtension.cs" />
+    <Compile Include="Parsing\ElementNode.cs" />
+    <Compile Include="Parsing\Visitors\ExpandMarkupsVisitor.cs" />
+    <Compile Include="Parsing\Visitors\FillResourceDictionariesVisitor.cs" />
+    <Compile Include="Parsing\HydratationContext.cs" />
+    <Compile Include="Extensions\IDictionaryExtensions.cs" />
+    <Compile Include="Parsing\IElementNode.cs" />
+    <Compile Include="Parsing\IExpressionParser.cs" />
+    <Compile Include="Parsing\IListNode.cs" />
+    <Compile Include="Services\INameScopeProvider.cs" />
+    <Compile Include="Parsing\INode.cs" />
+    <Compile Include="Parsing\IValueNode.cs" />
+    <Compile Include="Parsing\Visitors\IXamlNodeVisitor.cs" />
+    <Compile Include="Parsing\ListNode.cs" />
+    <Compile Include="Parsing\MarkupExpressionParser.cs" />
+    <Compile Include="Parsing\MarkupExtensionParser.cs" />
+    <Compile Include="Parsing\MarkupNode.cs" />
+    <Compile Include="Services\ITypeResolutionService.cs" />
+    <Compile Include="Services\IVisitorProviderService.cs" />
+    <Compile Include="Services\NameScopeProvider.cs" />
+    <Compile Include="Parsing\Visitors\NamescopingVisitor.cs" />
+    <Compile Include="Markup\NullExtension.cs" />
+    <Compile Include="Markup\ReferenceExtension.cs" />
+    <Compile Include="Parsing\Visitors\RegisterXNamesVisitor.cs" />
+    <Compile Include="Parsing\RootNode.cs" />
+    <Compile Include="Parsing\RuntimeRootNode.cs" />
+    <Compile Include="Markup\StaticExtension.cs" />
+    <Compile Include="Markup\StaticResourceExtension.cs" />
+    <Compile Include="Extensions\TypeConversionExtensions.cs" />
+    <Compile Include="Markup\TypeExtension.cs" />
+    <Compile Include="Services\ValueConverterProvider.cs" />
+    <Compile Include="Parsing\ValueNode.cs" />
+    <Compile Include="Parsing\Visitors\Visitor.cs" />
+    <Compile Include="XamlServices.cs" />
+    <Compile Include="Parsing\Visitors\DelegateNodeVisitor.cs" />
+    <Compile Include="Parsing\NodeContentParser.cs" />
+    <Compile Include="Services\XamlRootObjectProvider.cs" />
+    <Compile Include="Services\XamlServiceProvider.cs" />
+    <Compile Include="Parsing\XamlTypeResolver.cs" />
+    <Compile Include="Services\XamlValueTargetProvider.cs" />
+    <Compile Include="Parsing\XmlLineInfoProvider.cs" />
+    <Compile Include="Parsing\XmlName.cs" />
+    <Compile Include="Parsing\XmlnsHelper.cs" />
+    <Compile Include="Parsing\XmlType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>
