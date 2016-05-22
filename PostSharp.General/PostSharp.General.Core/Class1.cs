@@ -1,7 +1,6 @@
 ﻿using PostSharp.Aspects;
-using System.Diagnostics;
-using System.Reflection;
 using PostSharp.General.Portable;
+using System.Diagnostics;
 
 namespace PostSharp.General.Core
 {
@@ -15,12 +14,8 @@ namespace PostSharp.General.Core
 	}
 
 	[Validator]
-	public class Command : ICommand2<MethodBase>
+	public class Command : ICommand
 	{
-		public virtual void Update() {}
-
-		public virtual bool CanExecute( MethodBase parameter ) => true;
-
-		public void Execute( MethodBase parameter ) { }
+		public void Execute() { }
 	}
 }

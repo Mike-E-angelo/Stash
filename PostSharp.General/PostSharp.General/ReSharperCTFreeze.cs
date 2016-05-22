@@ -1,5 +1,4 @@
 ﻿using PostSharp.General.Core;
-using System.Reflection;
 using Xunit;
 
 namespace PostSharp.General
@@ -9,7 +8,7 @@ namespace PostSharp.General
 		[Fact]
 		public void Run()
 		{
-			new Command().Execute( MethodBase.GetCurrentMethod() );
+			new Command().Execute();
 		}
 	}
 }

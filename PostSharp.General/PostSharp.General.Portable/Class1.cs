@@ -5,13 +5,9 @@ using PostSharp.Serialization;
 
 namespace PostSharp.General.Portable
 {
-	public interface ICommand2<in TParameter> // : ICommand
+	public interface ICommand
 	{
-		bool CanExecute( TParameter parameter );
-
-		void Execute( TParameter parameter );
-
-		void Update();
+		void Execute();
 	}
 
 	[PSerializable]
