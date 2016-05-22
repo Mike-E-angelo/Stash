@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.General", "PostSharp.General\PostSharp.General.csproj", "{543D58B9-0A5D-434C-8C8B-5A0691F7D097}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.General.Core", "PostSharp.General.Core\PostSharp.General.Core.csproj", "{C5FC9855-CFB9-4CF1-9E17-AD993CF4DF8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.General.Portable", "PostSharp.General.Portable\PostSharp.General.Portable.csproj", "{1A7BE4DB-E36E-4A4B-9219-621C42D2D8A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{543D58B9-0A5D-434C-8C8B-5A0691F7D097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{543D58B9-0A5D-434C-8C8B-5A0691F7D097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{543D58B9-0A5D-434C-8C8B-5A0691F7D097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5FC9855-CFB9-4CF1-9E17-AD993CF4DF8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5FC9855-CFB9-4CF1-9E17-AD993CF4DF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5FC9855-CFB9-4CF1-9E17-AD993CF4DF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5FC9855-CFB9-4CF1-9E17-AD993CF4DF8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7BE4DB-E36E-4A4B-9219-621C42D2D8A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7BE4DB-E36E-4A4B-9219-621C42D2D8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7BE4DB-E36E-4A4B-9219-621C42D2D8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7BE4DB-E36E-4A4B-9219-621C42D2D8A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
