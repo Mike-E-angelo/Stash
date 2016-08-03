@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
-      "AutoFixture/3.49.0": {
+      "AutoFixture/3.49.1": {
         "type": "package",
         "compile": {
           "lib/net40/Ploeh.AutoFixture.dll": {}
@@ -12,23 +12,10 @@
           "lib/net40/Ploeh.AutoFixture.dll": {}
         }
       },
-      "AutoFixture.AutoMoq/3.49.0": {
+      "AutoFixture.Xunit2/3.49.1": {
         "type": "package",
         "dependencies": {
-          "AutoFixture": "3.49.0",
-          "Moq": "4.1.1308.2120"
-        },
-        "compile": {
-          "lib/net40/Ploeh.AutoFixture.AutoMoq.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Ploeh.AutoFixture.AutoMoq.dll": {}
-        }
-      },
-      "AutoFixture.Xunit2/3.49.0": {
-        "type": "package",
-        "dependencies": {
-          "AutoFixture": "3.49.0",
+          "AutoFixture": "3.49.1",
           "xunit.core": "[2.0.0, 3.0.0)"
         },
         "compile": {
@@ -36,15 +23,6 @@
         },
         "runtime": {
           "lib/net45/Ploeh.AutoFixture.Xunit2.dll": {}
-        }
-      },
-      "Moq/4.1.1308.2120": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Moq.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Moq.dll": {}
         }
       },
       "xunit/2.1.0": {
@@ -108,7 +86,7 @@
       }
     },
     ".NETFramework,Version=v4.6.1/win": {
-      "AutoFixture/3.49.0": {
+      "AutoFixture/3.49.1": {
         "type": "package",
         "compile": {
           "lib/net40/Ploeh.AutoFixture.dll": {}
@@ -117,23 +95,10 @@
           "lib/net40/Ploeh.AutoFixture.dll": {}
         }
       },
-      "AutoFixture.AutoMoq/3.49.0": {
+      "AutoFixture.Xunit2/3.49.1": {
         "type": "package",
         "dependencies": {
-          "AutoFixture": "3.49.0",
-          "Moq": "4.1.1308.2120"
-        },
-        "compile": {
-          "lib/net40/Ploeh.AutoFixture.AutoMoq.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Ploeh.AutoFixture.AutoMoq.dll": {}
-        }
-      },
-      "AutoFixture.Xunit2/3.49.0": {
-        "type": "package",
-        "dependencies": {
-          "AutoFixture": "3.49.0",
+          "AutoFixture": "3.49.1",
           "xunit.core": "[2.0.0, 3.0.0)"
         },
         "compile": {
@@ -141,15 +106,6 @@
         },
         "runtime": {
           "lib/net45/Ploeh.AutoFixture.Xunit2.dll": {}
-        }
-      },
-      "Moq/4.1.1308.2120": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Moq.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Moq.dll": {}
         }
       },
       "xunit/2.1.0": {
@@ -214,55 +170,28 @@
     }
   },
   "libraries": {
-    "AutoFixture/3.49.0": {
-      "sha512": "b/9Tvgf4INMgAMUXA1+DtzhS5YkzotzQ9codUJELMKy3RMBVMHs5C9oxW2lsyPY8xXduSoCqpunYoXnkYrUPeg==",
+    "AutoFixture/3.49.1": {
+      "sha512": "JkyBnN73tlY4AsdoWJaRVxttq+cgyjpxs+FFpFcrcSQxCNd7Iw2Nh/o6RSQkuhv64oraSKBldCsuRrA92beMQQ==",
       "type": "package",
-      "path": "AutoFixture/3.49.0",
+      "path": "AutoFixture/3.49.1",
       "files": [
-        "AutoFixture.3.49.0.nupkg.sha512",
+        "AutoFixture.3.49.1.nupkg.sha512",
         "AutoFixture.nuspec",
         "lib/net40/Ploeh.AutoFixture.XML",
         "lib/net40/Ploeh.AutoFixture.dll",
         "tools/Install.ps1"
       ]
     },
-    "AutoFixture.AutoMoq/3.49.0": {
-      "sha512": "Z8q6g51XXACnsbKywDwgOmayDM07HWzMYvQmTgNmN49XcwTTIIKYG35ISW0zYwW55oqhIxemVi+0X8MYnSMW7g==",
+    "AutoFixture.Xunit2/3.49.1": {
+      "sha512": "rb72BRo7awpW8FHGTG+I9OaBc7TdhNJs3UyU4TsCf5+1z40/M//owbodRWYI5pdOybpEccauE5GKB08AepPAhw==",
       "type": "package",
-      "path": "AutoFixture.AutoMoq/3.49.0",
+      "path": "AutoFixture.Xunit2/3.49.1",
       "files": [
-        "AutoFixture.AutoMoq.3.49.0.nupkg.sha512",
-        "AutoFixture.AutoMoq.nuspec",
-        "lib/net40/Ploeh.AutoFixture.AutoMoq.XML",
-        "lib/net40/Ploeh.AutoFixture.AutoMoq.dll",
-        "tools/Install.ps1"
-      ]
-    },
-    "AutoFixture.Xunit2/3.49.0": {
-      "sha512": "+xreSVeZPQJ92zpeG7pve7W8C+ecNqaLspfKnaK8Vw4RnWV1VRGhxDXme4GUz/bvazq3kUVchoUjvTMC/WBD3A==",
-      "type": "package",
-      "path": "AutoFixture.Xunit2/3.49.0",
-      "files": [
-        "AutoFixture.Xunit2.3.49.0.nupkg.sha512",
+        "AutoFixture.Xunit2.3.49.1.nupkg.sha512",
         "AutoFixture.Xunit2.nuspec",
         "lib/net45/Ploeh.AutoFixture.Xunit2.XML",
         "lib/net45/Ploeh.AutoFixture.Xunit2.dll",
         "tools/Install.ps1"
-      ]
-    },
-    "Moq/4.1.1308.2120": {
-      "sha512": "HyvoHvSWedidancoSBeyNcASfq7y8Bm5o0/tFsSfCxSWp162zJ/ld1q0PpP2HeAGuJAJyU1TgA/yJhrjXO8Cyg==",
-      "type": "package",
-      "path": "Moq/4.1.1308.2120",
-      "files": [
-        "Moq.4.1.1308.2120.nupkg.sha512",
-        "Moq.nuspec",
-        "lib/net35/Moq.dll",
-        "lib/net35/Moq.xml",
-        "lib/net40/Moq.dll",
-        "lib/net40/Moq.xml",
-        "lib/sl4/Moq.Silverlight.dll",
-        "lib/sl4/Moq.Silverlight.xml"
       ]
     },
     "xunit/2.1.0": {
@@ -417,10 +346,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "AutoFixture.AutoMoq >= 3.49.0",
-      "AutoFixture.Xunit2 >= 3.49.0",
+      "AutoFixture.Xunit2 >= 3.49.1",
       "xunit >= 2.1.0",
-      "xunit.assert >= 2.1.0",
       "xunit.runner.visualstudio >= 2.1.0"
     ],
     ".NETFramework,Version=v4.6.1": []
