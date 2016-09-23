@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.postsharp.org/1.0/configuration">
+  <Property Name="PostSharpPackageManager" Value="NuGet" />
+  <Property Name="SolutionWideProcessingEnabled" Value="true" />
+  <Property Name="DebuggerExtensionsDisabled" Value="false" />
+</Project>
