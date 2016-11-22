@@ -45,6 +45,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VersionExtension.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MsftBuild.Model\MsftBuild.Model.csproj">
+      <Project>{25AF3306-9FC0-4331-8A9B-2FC46A84E1F7}</Project>
+      <Name>MsftBuild.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
