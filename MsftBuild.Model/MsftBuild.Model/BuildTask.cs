@@ -10,9 +10,9 @@ namespace MsftBuild.Model
 			var profile = provider.GetService( typeof(BuildProfile) ) as BuildProfile ?? new DefaultBuildProfile();
 
 			// From here, we could:
-			// 1. Use XSLT to generate a traditional .csproj file, save it to a temp directory.
-			// 2. Launch msbuild.exe and point it to .csproj from above.
-			// 3. Profit. https://www.youtube.com/watch?v=tO5sxLapAts
+			// 1. Serialize profile (and other services) as XML.
+			// 2. Execute XSLT against XML from above to generate a traditional .csproj file, save result to a temp directory.
+			// 3. Launch msbuild.exe and point it to .csproj from above. 
 		}
 
 		class DefaultBuildProfile : BuildProfile {

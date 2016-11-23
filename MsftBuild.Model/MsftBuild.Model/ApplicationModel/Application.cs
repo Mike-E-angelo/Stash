@@ -1,60 +1,35 @@
 using MsftBuild.Model.Serialization;
-using System;
-using System.Linq;
-using System.Windows.Input;
 
 namespace MsftBuild.Model.ApplicationModel
 {
-	public class Application : ICommand
+	public class ApplicationArguments
 	{
-		readonly static string[] RequiredParameters = { "ProcessorFile", "ProjectFile" };
-
+		public string ProcessorFile { get; set; }
+		public string ProjectFile { get; set; }
+	}
+	public class Application : CommandBase<ApplicationArguments>
+	{
 		public static Application Default { get; } = new Application();
-		Application() : this( ArgumentParser.Default, SerializerLocator.Default ) {}
+		Application() : this( SerializerLocator.Default ) {}
 
-		public event EventHandler CanExecuteChanged = delegate {};
-
-		readonly IArgumentParser parser;
-		
 		readonly ISerializerLocator serializerLocator;
 
-		public Application( IArgumentParser parser, ISerializerLocator serializerLocator )
+		public Application( ISerializerLocator serializerLocator )
 		{
-			this.parser = parser;
 			this.serializerLocator = serializerLocator;
 		}
 
-		public bool CanExecute( object parameter )
+		public override void Execute( ApplicationArguments parameter )
 		{
-			var input = parameter as string[];
-			if ( input != null )
-			{
-				var dictionary = parser.Parse( input );
-				var result = RequiredParameters.All( dictionary.ContainsKey );
-				return result;
-			}
-			return false;
-		}
+			// Get the processor:
+			var processor = Load<IProcessor>( parameter.ProcessorFile );
 
-		public void Execute( object parameter )
-		{
-			var input = parameter as string[];
-			if ( input != null )
-			{
-				var arguments = parser.Parse( input );
+			// Get the data file (inputs to process):
+			var project = Load<IProject>( parameter.ProjectFile );
 
-				// Get the processor:
-				var processorFile = arguments[Arguments.ProcessorFile];
-				var processor = Load<IProcessor>( processorFile );
-
-				// Get the data file (inputs to process):
-				var projectFile = arguments[Arguments.ProjectFile];
-				var project = Load<IProject>( projectFile );
-
-				// Run it:
-				var context = new ProcessingContext( project );
-				processor.Execute( context );
-			}
+			// Run it:
+			var context = new ProcessingContext( project );
+			processor.Execute( context );
 		}
 
 		T Load<T>( string fileName )

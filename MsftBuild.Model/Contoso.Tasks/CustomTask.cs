@@ -14,9 +14,9 @@ namespace Contoso.Tasks
 		public void Execute( IServiceProvider provider, IState state )
 		{
 			Console.WriteLine( "This task simply writes out to the console the specified values." );
-			Console.WriteLine( "SomeProperty:", SomeProperty );
-			Console.WriteLine( "SomeDate:", SomeDate );
-			Console.WriteLine( "SomeNumber:", SomeNumber );
+			Console.WriteLine( "SomeProperty: {0}", SomeProperty );
+			Console.WriteLine( "SomeDate: {0}", SomeDate );
+			Console.WriteLine( "SomeNumber: {0}", SomeNumber );
 		}
 	}
 }

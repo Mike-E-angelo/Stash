@@ -1,26 +1,31 @@
 ﻿using MsftBuild.Model.ApplicationModel;
-using System;
 
 namespace MsftBuild
 {
-	public class Program
+	public static class Program
 	{
 		// Some examples of possible CLI invocations:
-		// MsftBuild /ProccessorFile:Processors\Processor.json /ProjectFile:Projects\Project.xaml
+		// MsftBuild /p:SampleFormats\Json\Processor.json /d:SampleFormats\Json\Project.json
+		//		(JSON-based Processor and Project file.)
+		// MsftBuild /p:SampleFormats\Xml\Processor.xml /d:SampleFormats\Xml\Project.xml
+		//		(Xml-based Processor and Project file.)
+		// MsftBuild /p:SampleFormats\Xaml\Processor.xaml /d:SampleFormats\Xaml\Project.xaml
+		//		(Xaml-based Processor and Project file.)
+		//
+		// Or, if you wanna get cute... :) :) :)
+		//
+		// MsftBuild /p:SampleFormats\Json\Processor.json /d:SampleFormats\Xaml\Project.xaml
 		//		(JSON-based Processor with a Xaml-based Project file.)
-		// MsftBuild /ProccessorFile:Processors\Processor.xaml /ProjectFile:Projects\Project.json
+		// MsftBuild /p:SampleFormats\Xaml\Processor.xaml /d:SampleFormats\Json\Project.json
 		//		(Xaml-based Processor with a JSON-based Project file.)
-		// MsftBuild /ProccessorFile:Processors\Processor.xml /ProjectFile:Projects\Project.json
+		// MsftBuild /p:SampleFormats\Xml\Processor.xml /d:SampleFormats\Json\Project.json
 		//		(XML-based Processor with a JSON-based Project file.)
 		static void Main( string[] args )
 		{
-			throw new InvalidOperationException( 
-				@"No, this sample doesn't actually work at present, but is meant for envisioning, design consideration, and direction purposes. However, feel free to modify it so that it does work. :)" 
-			);
-
-			if ( Application.Default.CanExecute( args ) )
+			var arguments = ArgumentParser.Default.Parse( args );
+			if ( Application.Default.CanExecute( arguments ) )
 			{
-				Application.Default.Execute( args );
+				Application.Default.Execute( arguments );
 			}
 		}
 	}

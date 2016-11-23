@@ -1,4 +1,4 @@
-﻿namespace MsftBuild.Projects
+﻿namespace SampleFormats.Xaml
 {
 	/// <summary>
 	/// Interaction logic for Project.xaml
