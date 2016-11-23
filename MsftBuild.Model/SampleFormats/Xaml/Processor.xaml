@@ -1,0 +1,11 @@
+﻿<model:Processor x:Class="SampleFormats.Xaml.Processor"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:model="clr-namespace:MsftBuild.Model;assembly=MsftBuild.Model"
+	xmlns:tasks="clr-namespace:Contoso.Tasks;assembly=Contoso.Tasks"
+	mc:Ignorable="d">
+	<model:BuildTask />
+	<tasks:CustomTask SomeProperty="Hello World!" SomeDate="11/23/2016" SomeNumber="123456789" />
+</model:Processor>

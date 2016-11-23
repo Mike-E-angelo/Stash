@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle( "MsftBuild.Model" )]
+[assembly: AssemblyTitle( "MsftBuild" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "" )]
-[assembly: AssemblyProduct( "MsftBuild.Model" )]
+[assembly: AssemblyProduct( "MsftBuild" )]
 [assembly: AssemblyCopyright( "Copyright ©  2016" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible( false )]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid( "25af3306-9fc0-4331-8a9b-2fc46a84e1f7" )]
+[assembly: Guid( "08cf996e-8b43-4695-a64e-23dc3ea43625" )]
 
 // Version information for an assembly consists of the following four values:
 //

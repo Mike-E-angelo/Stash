@@ -1,44 +1,31 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Markup;
 
 namespace MsftBuild.Model
 {
 	public interface IProcessor
 	{
-		void Execute( IServiceProvider provider );
+		void Execute( IProcessingContext context );
 	}
 
-	[ContentProperty( nameof(Tasks) )]
-	public class Processor : IProcessor
+	public interface IProcessingContext : IServiceProvider
 	{
-		public void Execute( IServiceProvider provider )
-		{
-			foreach ( var task in Tasks )
-			{
-				task.Execute( provider );
-			}
-		}
-
-		public Collection<ITask> Tasks { get; } = new Collection<ITask>();
+		IState State { get; }
 	}
 
-	public interface ITask
+	class ProcessingContext : IProcessingContext
 	{
-		void Execute( IServiceProvider provider );
-	}
+		readonly IProject project;
 
-	public class BuildProcessor : ITask
-	{
-		public void Execute( IServiceProvider provider )
+		public ProcessingContext( IProject project ) : this( project, new State() ) {}
+
+		public ProcessingContext( IProject project, IState state )
 		{
-			var profile = provider.GetService( typeof(BuildProfile) ) ?? new DefaultBuildProfile();
-			// ...
+			this.project = project;
+			State = state;
 		}
 
-		public class DefaultBuildProfile
-		{
-			// ...
-		}
+		public object GetService( Type serviceType ) => project.GetService( serviceType );
+
+		public IState State { get; }
 	}
 }
