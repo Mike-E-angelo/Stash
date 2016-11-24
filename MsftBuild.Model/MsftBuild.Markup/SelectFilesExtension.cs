@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using MsftBuild.Model;
+using System;
 using System.Windows.Markup;
 
 namespace MsftBuild.Markup
@@ -14,6 +14,6 @@ namespace MsftBuild.Markup
 		}
 
 		public override object ProvideValue( IServiceProvider serviceProvider ) => 
-			new DirectoryInfo( Directory.GetCurrentDirectory() ).GetFileSystemInfos( query );
+			new QueryableFileCollection { Query = query };
 	}
 }

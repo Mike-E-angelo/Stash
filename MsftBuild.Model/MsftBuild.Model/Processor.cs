@@ -1,19 +1,13 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Markup;
-
-namespace MsftBuild.Model
+﻿namespace MsftBuild.Model
 {
-	[ContentProperty( nameof(Tasks) )]
-	public class Processor : IProcessor
+	public class Processor : Collection<ITask>, IProcessor
 	{
 		public void Execute( IProcessingContext context )
 		{
-			foreach ( var task in Tasks )
+			foreach ( var task in this )
 			{
-				task.Execute( context, context.State );
+				task.Execute( context );
 			}
 		}
-
-		public Collection<ITask> Tasks { get; } = new Collection<ITask>();
 	}
 }

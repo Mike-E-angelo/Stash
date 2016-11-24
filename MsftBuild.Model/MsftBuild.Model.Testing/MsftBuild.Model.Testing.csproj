@@ -61,13 +61,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProjectTests.cs" />
+    <Compile Include="Serialization\JsonSerializerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contoso.Tasks\Contoso.Tasks.csproj">
+      <Project>{90208adc-86b5-4b9b-91ad-2c996c7aefac}</Project>
+      <Name>Contoso.Tasks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MsftBuild.Markup\MsftBuild.Markup.csproj">
       <Project>{2d736885-5af6-453b-a865-f958610839fc}</Project>
       <Name>MsftBuild.Markup</Name>
@@ -75,6 +79,11 @@
     <ProjectReference Include="..\MsftBuild.Model\MsftBuild.Model.csproj">
       <Project>{25af3306-9fc0-4331-8a9b-2fc46a84e1f7}</Project>
       <Name>MsftBuild.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SampleFormats\SampleFormats.csproj">
+      <Project>{de9f42be-7fed-4d6a-97d9-697c6b281dcd}</Project>
+      <Name>SampleFormats</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MsftBuild.Model
+﻿namespace MsftBuild.Model
 {
 	public class BuildConfiguration
 	{
@@ -10,6 +8,6 @@ namespace MsftBuild.Model
 
 		public LoggingSettings Logging { get; set; }
 
-		public List<Directive> Directives { get; } = new List<Directive>();
+		public System.Collections.Generic.List<Directive> Directives { get; } = new System.Collections.Generic.List<Directive>();
 	}
 }

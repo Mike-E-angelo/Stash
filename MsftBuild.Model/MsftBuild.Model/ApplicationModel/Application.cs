@@ -1,12 +1,8 @@
 using MsftBuild.Model.Serialization;
+using System.IO;
 
 namespace MsftBuild.Model.ApplicationModel
 {
-	public class ApplicationArguments
-	{
-		public string ProcessorFile { get; set; }
-		public string ProjectFile { get; set; }
-	}
 	public class Application : CommandBase<ApplicationArguments>
 	{
 		public static Application Default { get; } = new Application();
@@ -25,17 +21,18 @@ namespace MsftBuild.Model.ApplicationModel
 			var processor = Load<IProcessor>( parameter.ProcessorFile );
 
 			// Get the data file (inputs to process):
-			var project = Load<IProject>( parameter.ProjectFile );
+			var project = Load<IBuildInput>( parameter.InputFile );
 
 			// Run it:
 			var context = new ProcessingContext( project );
+			context.Set( parameter );
 			processor.Execute( context );
 		}
 
 		T Load<T>( string fileName )
 		{
 			var serializer = serializerLocator.Locate( fileName );
-			var result = serializer.Load<T>( fileName );
+			var result = serializer.Load<T>( new StreamReader( fileName ).BaseStream );
 			return result;
 		}
 	}

@@ -3,12 +3,6 @@ using System.Windows.Input;
 
 namespace MsftBuild.Model
 {
-	public interface ICommand<in T> : ICommand
-	{
-		bool CanExecute( T parameter );
-		void Execute( T parameter );
-	}
-
 	public abstract class CommandBase<T> : ICommand<T>
 	{
 		public event EventHandler CanExecuteChanged = delegate {};

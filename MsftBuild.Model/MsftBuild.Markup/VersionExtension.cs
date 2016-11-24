@@ -16,6 +16,6 @@ namespace MsftBuild.Markup
 		}
 
 		public override object ProvideValue( IServiceProvider serviceProvider ) => 
-			File.Exists( path ) ? new Version( File.ReadAllText( path ) ) : null;
+			new Version( File.Exists( path ) ? File.ReadAllText( path ) : "1.0.0.0" );
 	}
 }

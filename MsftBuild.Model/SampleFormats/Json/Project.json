@@ -1,31 +1,46 @@
-﻿[
-	{
-		"Name": "Console App",
-		"Version": "1.0.0.0",
-		"Author": "Mr. Awesome"
-	},
-	{
-		"Configurations": [
-			{
-				"Name": "Debug",
-				"Selected": true,
-				"Logging": {
-					"Enabled": true,
-					"MinimumLevel": 1
-				},
-				"Directives": []
+﻿{
+	"$type": "MsftBuild.Model.Project, MsftBuild.Model",
+	"$values": [
+		{
+			"$type": "MsftBuild.Model.AssemblyInformation, MsftBuild.Model",
+			"Name": "Console App",
+			"Version": {
+				"Major": 1,
+				"Minor": 0,
+				"Build": 0,
+				"Revision": 0,
+				"MajorRevision": 0,
+				"MinorRevision": 0
 			},
-			{
-				"Name": "Release",
-				"Selected": false,
-				"Logging": {
-					"Enabled": false,
-					"MinimumLevel": 2
+			"Author": "Mr. Awesome"
+		},
+		{
+			"$type": "MsftBuild.Model.BuildProfile, MsftBuild.Model",
+			"Files": {
+				"$type": "MsftBuild.Model.QueryableFileCollection, MsftBuild.Model",
+				"Query": "**\\*.cs"
+			},
+			"Configurations": [
+				{
+					"Name": "Debug",
+					"Selected": true,
+					"Logging": {
+						"Enabled": true,
+						"MinimumLevel": 1
+					},
+					"Directives": []
 				},
-				"Directives": []
-			}
-		],
-		"Files": [ "**\\*.cs" ],
-		"Dependencies": [ { "Name": "ExternalProject" } ]
-	}
-]
+				{
+					"Name": "Release",
+					"Selected": false,
+					"Logging": {
+						"Enabled": false,
+						"MinimumLevel": 2
+					},
+					"Directives": []
+				}
+			],
+			"Dependencies": [ { "Name": "ExternalProject" } ]
+		}
+	]
+}

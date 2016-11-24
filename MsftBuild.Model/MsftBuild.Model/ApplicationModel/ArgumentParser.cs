@@ -14,12 +14,12 @@ namespace MsftBuild.Model.ApplicationModel
 				.Setup( arguments => arguments.ProcessorFile )
 				.As( 'p', nameof(ApplicationArguments.ProcessorFile) )
 				.Required()
-				.WithDescription( "Processor file that describes the tasks to execute." );
+				.WithDescription( "Processor file that describes the build tasks to execute." );
 			parser
-				.Setup( arguments => arguments.ProjectFile )
-				.As( 'd', nameof(ApplicationArguments.ProjectFile) )
+				.Setup( arguments => arguments.InputFile )
+				.As( 'i', nameof(ApplicationArguments.InputFile) )
 				.Required()
-				.WithDescription( "Project (data) file that describes the inputs to send to the processor." );
+				.WithDescription( "Input (data) file that describes the inputs to send to the build processor." );
 
 			var parsed = parser.Parse( parameter );
 			var result = parsed.HasErrors ? null : parser.Object;

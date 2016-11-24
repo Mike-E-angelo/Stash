@@ -1,13 +1,11 @@
-﻿<model:Project x:Class="SampleFormats.Xaml.Project"
-			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			 xmlns:model="clr-namespace:MsftBuild.Model;assembly=MsftBuild.Model"
-			 xmlns:markup="clr-namespace:MsftBuild.Markup;assembly=MsftBuild.Markup"
-			 mc:Ignorable="d">
+﻿<model:Project 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:model="clr-namespace:MsftBuild.Model;assembly=MsftBuild.Model"
+	xmlns:markup="clr-namespace:MsftBuild.Markup;assembly=MsftBuild.Markup"
+>
 	<model:AssemblyInformation Name="Console App" Author="Mr. Awesome" Version="{markup:Version}" />
-	<model:BuildProfile Files="{markup:SelectFiles '**\*.cs'}">
+	<model:BuildProfile Files="{markup:SelectFiles '**\\*.cs'}">
 		<model:BuildProfile.Configurations>
 			<model:BuildConfiguration Name="Debug" Selected="True">
 				<model:BuildConfiguration.Logging>

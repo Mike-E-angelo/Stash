@@ -1,4 +1,7 @@
 ﻿namespace MsftBuild.Model
 {
-	public interface IFile {}
+	public interface IFile
+	{
+		string Path { get; }
+	}
 }

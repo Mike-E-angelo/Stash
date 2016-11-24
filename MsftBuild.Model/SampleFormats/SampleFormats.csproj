@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,26 +45,36 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Json\BasicClassInJson.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Json\SubFolder\SubClassInJson.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Xaml\Processor.xaml.cs">
-      <DependentUpon>Processor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Xaml\Project.xaml.cs">
-      <DependentUpon>Project.xaml</DependentUpon>
-    </Compile>
+    <Content Include="Xaml\BasicClassInXaml.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Xaml\SubFolder\SubClassInXaml.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Xaml\Processor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="Xaml\Project.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Json\Project.json" />
+    <Content Include="Json\Project.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Xml\" />
@@ -82,11 +93,20 @@
       <Name>MsftBuild.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Json\Processor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+    <ItemGroup>
+      <Content Include="@(Page)" Condition="%(CopyToOutputDirectory) != 'Do not copy'" />
+    </ItemGroup>
   </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  
   <Target Name="AfterBuild">
   </Target>
   -->

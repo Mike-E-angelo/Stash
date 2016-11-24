@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contoso.Tasks\Contoso.Tasks.csproj">
+      <Project>{90208adc-86b5-4b9b-91ad-2c996c7aefac}</Project>
+      <Name>Contoso.Tasks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MsftBuild.Markup\MsftBuild.Markup.csproj">
       <Project>{2d736885-5af6-453b-a865-f958610839fc}</Project>
       <Name>MsftBuild.Markup</Name>
@@ -68,10 +72,12 @@
       <Project>{25AF3306-9FC0-4331-8A9B-2FC46A84E1F7}</Project>
       <Name>MsftBuild.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SampleFormats\SampleFormats.csproj">
+      <Project>{de9f42be-7fed-4d6a-97d9-697c6b281dcd}</Project>
+      <Name>SampleFormats</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SampleFormats\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

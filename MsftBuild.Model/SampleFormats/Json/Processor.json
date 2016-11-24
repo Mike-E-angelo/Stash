@@ -1,0 +1,26 @@
+﻿{
+	"$type": "MsftBuild.Model.Processor, MsftBuild.Model",
+	"$values": [
+		{
+			"$type": "MsftBuild.Model.MessageTask, MsftBuild.Model",
+			"Message": "Welcome to the MsftBuild POCO-based Proof of Concept Application.  Building your provided input..."
+		},
+		{ "$type": "MsftBuild.Model.AssignCurrentDirectoryTask, MsftBuild.Model" },
+		{
+			"$type": "Contoso.Tasks.CustomTask, Contoso.Tasks",
+			"SomeProperty": "Hello World!",
+			"SomeDate": "2016-11-23T00:00:00",
+			"SomeNumber": 123456789
+		},
+		{ "$type": "MsftBuild.Model.BuildProjectTask, MsftBuild.Model" },
+		{
+			"$type": "MsftBuild.Model.MessageTask, MsftBuild.Model",
+			"Message": "Build completed."
+		},
+		{
+			"$type": "MsftBuild.Model.ReadKeyTask, MsftBuild.Model",
+			"Message": "Press Enter to Continue...",
+			"Exiting": "Now Exiting... Have a Nice Day. :)"
+		}
+	]
+}
