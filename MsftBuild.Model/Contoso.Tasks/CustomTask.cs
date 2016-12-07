@@ -15,6 +15,10 @@ namespace Contoso.Tasks
 			this.writer = writer;
 		}
 
+		public bool IsAwesome { get; set; }
+
+		public LogEventLevel SomeEnum { get; set; }
+
 		public string SomeProperty { get; set; }
 
 		public DateTime SomeDate { get; set; }
