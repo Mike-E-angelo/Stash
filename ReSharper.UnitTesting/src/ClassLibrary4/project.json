@@ -1,0 +1,55 @@
+﻿{
+  "buildOptions": {
+  },
+  "title": "ExtendedXmlSerializer",
+  "version": "1.5.0",
+  "packOptions": {
+    "owners": [ "Wojciech Nagórski" ],
+    "licenseUrl": "https://github.com/wojtpl2/ExtendedXmlSerializer/blob/master/Licence",
+    "projectUrl": "https://github.com/wojtpl2/ExtendedXmlSerializer",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/wojtpl2/ExtendedXmlSerializer"
+    },
+    "tags": [
+      "xmlserializer",
+      "xmlserialization",
+      "serialization",
+      "ExtendedXmlSerializer"
+    ]
+  },
+  "description": "Extended Xml Serializer for .NET",
+  "authors": [
+    "Wojciech Nagórski"
+  ],
+    "frameworks": {
+        "net45": {
+            "buildOptions": {
+                "define": [ "CLASSIC" ]
+            },
+            "frameworkAssemblies": {
+                "System.Data": "4.0.0.0",
+                "System.Xml": "4.0.0.0",
+                "System.Xml.Linq": "4.0.0.0",
+                "System.ComponentModel": "4.0.0.0",
+                "System.Reflection": "4.0.0.0"
+            }
+        },
+        "netstandard1.6": {
+            "buildOptions": {
+                "define": [ "CORE" ]
+            },
+            "dependencies": {
+                "System.Collections.NonGeneric": "4.3.0",
+                "NETStandard.Library": "1.6.1",
+                "System.Reflection.TypeExtensions": "4.3.0",
+                "Microsoft.Extensions.DependencyModel": "1.1.0",
+                "System.ComponentModel": "4.3.0",
+                "System.Xml.XmlSerializer": "4.3.0"
+            }
+        }
+    },
+    "dependencies": {
+        "System.Collections.Immutable": "1.3.0"
+    }
+}
