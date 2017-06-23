@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Common.Testing
 {
-	public class PlatformActivatorTests
+	public class AssemblyProviderTests
 	{
 		[Fact]
 		public void Count()
