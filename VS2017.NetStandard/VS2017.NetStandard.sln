@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Platform.Core", "Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Testing", "Common.Testing\Common.Testing.csproj", "{41D5B5C8-4648-4C81-8FC8-72A7222B39F1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platform", "Platform", "{CFF67603-D2AE-4BD9-AA2C-65D05B4A19AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{34D719F5-A969-4B14-A71A-83EDEF57F19F} = {CFF67603-D2AE-4BD9-AA2C-65D05B4A19AE}
+		{66D496CA-C0A8-48BB-A994-47A54ABDE180} = {CFF67603-D2AE-4BD9-AA2C-65D05B4A19AE}
 	EndGlobalSection
 EndGlobal
