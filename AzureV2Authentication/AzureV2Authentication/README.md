@@ -1,4 +1,8 @@
-﻿Steps:
+﻿Attribution
+Data contracts/objects are based on:
+https://github.com/stuartleeks/AzureFunctionsEasyAuth
+
+Steps:
 1. Sign into your function at https://`function-name`.azurewebsites.net
 1. CTRL-SHIFT-C in Chrome -> Application -> Cookies -> <sitename> -> AppServiceAuthSession -> Copy Value
 1. Open local.settings.json and paste value from previous step in `AuthenticationToken` setting.

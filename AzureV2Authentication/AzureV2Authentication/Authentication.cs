@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace AzureFunctionsV2Authentication
 {
-	public class Authentication // structure based on sample here: https://cgillum.tech/2016/03/07/app-service-token-store/
+	public class Authentication // structure based on sample here: https://github.com/stuartleeks/AzureFunctionsEasyAuth/blob/master/src/FunctionWithAuth/AuthInfo.cs which was based on sample here: https://cgillum.tech/2016/03/07/app-service-token-store/
 	{
 		[JsonProperty("access_token", NullValueHandling = NullValueHandling.Ignore)]
 		public string AccessToken { get; set; }
