@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllocationVsRent", "AllocationVsRent\AllocationVsRent.csproj", "{0BEE260F-7445-4E85-ABEB-36B3D51CD8BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BEE260F-7445-4E85-ABEB-36B3D51CD8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BEE260F-7445-4E85-ABEB-36B3D51CD8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BEE260F-7445-4E85-ABEB-36B3D51CD8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BEE260F-7445-4E85-ABEB-36B3D51CD8BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0570A32D-32A4-49F0-AA1D-7A6AAD15F271}
+	EndGlobalSection
+EndGlobal
