@@ -192,3 +192,5 @@ ModelManifest.xml
 /AzureV2Authentication/.vs
 /AllocationVsRent/.vs/AllocationVsRent/v16/Server/sqlite3
 /AllocationVsRent/AllocationVsRent/BenchmarkDotNet.Artifacts/results
+/AwaitPerformance/.vs/AwaitPerformance/v16/Server/sqlite3
+/AwaitPerformance/AwaitPerformance/BenchmarkDotNet.Artifacts/results
