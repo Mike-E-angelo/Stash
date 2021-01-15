@@ -41,7 +41,7 @@ namespace EfCore.Interpolation
 				}).Select(x => new
 				{
 					Name     = nameof(First),
-					Property = x.Temp + " Interpolated"
+					Property = x.Temp + " Concatenated"
 				});
 
 				var all = await first.Concat(second).ToArrayAsync();
