@@ -1,0 +1,23 @@
+﻿@page "/"
+
+@inject SimpleContext Context
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<SfGrid TValue="Simple" DataSource="@Context.Items" AllowPaging="true" AllowFiltering="true">
+    <GridPageSettings PageCount="10" />
+    <GridFilterSettings Type="Blazor.Grids.FilterType.Excel" />
+    <GridColumns>
+        <GridColumn Field=@nameof(Simple.Id) HeaderText="Identity" />
+        <GridColumn Field=@nameof(Simple.Name) HeaderText="Name" />
+    </GridColumns>
+</SfGrid>
+
+@code
+{
+
+}
