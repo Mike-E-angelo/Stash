@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Syncfusion.Blazor
 
 @inject SimpleContext Context
 
@@ -8,9 +9,10 @@ Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
-<SfGrid TValue="Simple" DataSource="@Context.Items" AllowPaging="true" AllowFiltering="true">
+<SfGrid TValue="Simple" AllowPaging="true" AllowFiltering="true">
     <GridPageSettings PageCount="10" />
     <GridFilterSettings Type="Blazor.Grids.FilterType.Excel" />
+    <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
     <GridColumns>
         <GridColumn Field=@nameof(Simple.Id) HeaderText="Identity" />
         <GridColumn Field=@nameof(Simple.Name) HeaderText="Name" />
