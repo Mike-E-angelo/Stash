@@ -6,29 +6,20 @@ namespace Hyperlinq.Memory
 	public readonly struct Owner<T> : IMemoryOwner<T>
 	{
 		readonly ArrayPool<T> _pool;
-
-		public Owner(int size) : this(ArrayPool<T>.Shared, size) {}
-
-		public Owner(ArrayPool<T> pool, int size) : this(pool, size, pool.Rent(size)) {}
-
-		public Owner(ArrayPool<T> pool, int size, T[] store) : this(pool, store, store.AsMemory()[..size]) {}
+		readonly T[]          _store;
 
 		public Owner(ArrayPool<T> pool, T[] store, Memory<T> memory)
 		{
-			Store  = store;
 			Memory = memory;
 			_pool  = pool;
+			_store = store;
 		}
-
-		public T[] Store { get; }
 
 		public Memory<T> Memory { get; }
 
-
-
 		public void Dispose()
 		{
-			_pool.Return(Store);
+			_pool.Return(_store);
 		}
 	}
 }
