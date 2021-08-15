@@ -1,0 +1,13 @@
+﻿<Project>
+  <PropertyGroup>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+	<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>	
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>NU1603;NU1608;CS8669</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'!='Debug|AnyCPU'">
+    <NoWarn>CS8669</NoWarn>
+  </PropertyGroup>
+</Project>

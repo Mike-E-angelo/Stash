@@ -1,0 +1,34 @@
+﻿@inherits global::Syncfusion.Blazor.DataAdaptor
+
+@using DragonSpark.Application.Entities.Diagnostics
+@using DragonSpark.Application.Entities.Queries
+@using DragonSpark.Compose
+@using DragonSpark.Presentation.Components.Content
+@using global::Syncfusion.Blazor
+@using global::Syncfusion.Blazor.Data
+@using Microsoft.EntityFrameworkCore
+
+@typeparam T
+
+@code {
+
+    [Parameter]
+    public IQueryable<T> Input { get; set; } = default!;
+
+    [Parameter]
+    public IQuery<T> Query { get; set; } = Query<T>.Default;
+
+    [Parameter]
+    public EntityQuery<T> Content { get; set; } = DurableEntityQuery<T>.Default;
+
+    public override async Task<object> ReadAsync(DataManagerRequest request, string? key = null)
+    {
+        var (_, query, count) = await Query.Get(new(request, Input));
+
+        var elements = await Content.Materializers.ToList.Get(query);
+        var result = count.HasValue ? new DataResult { Result = elements, Count = count.Value.Degrade() }
+                         :
+                         (object)elements;
+        return result;
+    }
+}

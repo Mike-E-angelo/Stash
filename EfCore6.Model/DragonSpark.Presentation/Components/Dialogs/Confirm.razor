@@ -1,0 +1,72 @@
+﻿@* ReSharper disable UnknownCssClass *@
+@inherits RadzenComponent
+
+@using DragonSpark.Compose
+@using JetBrains.Annotations
+@using DragonSpark.Application.Runtime
+@using DragonSpark.Application.Diagnostics
+
+@inject DialogService Dialogs
+@inject IExceptions Exceptions
+
+<DragonSpark.Presentation.Components.Dialogs.DefaultEscapeContainer Escaped="@(() => Cancel.InvokeAsync(default!))">
+    <RadzenCard Style="padding: 20px;">
+        <ActivityReceiverContainer Context="receiver">
+            <p style="margin-bottom: 25px;">@ChildContent</p>
+            <div class="d-flex justify-content-between" style="gap: 20px">
+                <ButtonComponent Text="@SecondaryText" Click="OnCancel" ButtonStyle="ButtonStyle.Secondary"
+                                 class="@SecondaryClass" />
+
+                <ButtonComponent Text="@PrimaryText" Click="@(Exceptions.Bind<MouseEventArgs>(OnAccept).Using(receiver).UpdateActivity())"
+                                 class="@PrimaryClass" />
+            </div>
+        </ActivityReceiverContainer>
+    </RadzenCard>
+</DragonSpark.Presentation.Components.Dialogs.DefaultEscapeContainer>
+
+@code
+{
+    protected override Task OnInitializedAsync() => Opened.InvokeAsync();
+
+    async Task OnAccept(MouseEventArgs parameter)
+    {
+        if (await Confirmation())
+        {
+            await Accept.InvokeAsync(parameter);
+            Dialogs.Close();
+        }
+    }
+
+    async Task OnCancel(MouseEventArgs parameter)
+    {
+        await Cancel.InvokeAsync(parameter);
+        Dialogs.Close();
+    }
+
+    [Parameter]
+    public string PrimaryText { get; set; } = "OK";
+
+    [Parameter]
+    public string SecondaryText { get; set; } = "Cancel";
+
+    [Parameter]
+    public string PrimaryClass { get; set; } = default!;
+
+    [Parameter]
+    public string SecondaryClass { get; set; } = default!;
+
+    [Parameter]
+    public Func<ValueTask<bool>> Confirmation { get; set; } = () => true.ToOperation();
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback Opened { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> Accept { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> Cancel { get; set; }
+}

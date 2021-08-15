@@ -1,0 +1,60 @@
+﻿@using DragonSpark.Presentation.Compose
+
+@implements IActivityReceiver
+
+<div class="@(Active ? ActiveStyle : null)">
+    <fieldset disabled="@Active">
+        <CascadingValue TValue="IActivityReceiver" Value="@this">
+            @ChildContent(ActualReceiver)
+        </CascadingValue>
+    </fieldset>
+</div>
+
+@code
+{
+    bool Active { get; set; }
+
+    [Parameter]
+    public string ActiveStyle { get; set; } = "dragonspark-activity-active";
+
+    [Parameter]
+    public object? Receiver { get; set; }
+
+    [Parameter]
+    public RenderFragment<object> ChildContent { get; set; } = default!;
+
+
+    [Parameter]
+    public EventCallback Started { get; set; }
+
+    [Parameter]
+    public EventCallback Completed { get; set; }
+
+    object ActualReceiver => Receiver ?? this;
+
+    protected override void OnParametersSet()
+    {
+        Update();
+
+        base.OnParametersSet();
+    }
+
+    void Update()
+    {
+        Active = IsActive.Default.Get(ActualReceiver);
+    }
+
+    public async ValueTask Start()
+    {
+        await Started.InvokeAsync();
+        Update();
+        StateHasChanged();
+    }
+
+    public async ValueTask Complete()
+    {
+        Update();
+        await Completed.InvokeAsync();
+        StateHasChanged();
+    }
+}

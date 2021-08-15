@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <OutputType>Library</OutputType>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.Server\DragonSpark.Application.Hosting.Server.csproj" />
+    <ProjectReference
+      Include="..\DragonSpark.Application.Environment.Development\DragonSpark.Application.Environment.Development.csproj" />
+  </ItemGroup>
+
+</Project>

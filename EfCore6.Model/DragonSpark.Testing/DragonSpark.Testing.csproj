@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <IsPackable>false</IsPackable>
+    <startupobject>DragonSpark.Testing.Program</startupobject>
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <NoWarn>IDE0051</NoWarn>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Application\**" />
+    <Compile Remove="Aspects\**" />
+    <Compile Remove="Expressions\**" />
+    <Compile Remove="Model\Extents\**" />
+    <Compile Remove="Model\Sources\**" />
+    <Compile Remove="Model\Specifications\**" />
+    <Compile Remove="Operations\**" />
+    <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Aspects\**" />
+    <EmbeddedResource Remove="Expressions\**" />
+    <EmbeddedResource Remove="Model\Extents\**" />
+    <EmbeddedResource Remove="Model\Sources\**" />
+    <EmbeddedResource Remove="Model\Specifications\**" />
+    <EmbeddedResource Remove="Operations\**" />
+    <None Remove="Application\**" />
+    <None Remove="Aspects\**" />
+    <None Remove="Expressions\**" />
+    <None Remove="Model\Extents\**" />
+    <None Remove="Model\Sources\**" />
+    <None Remove="Model\Specifications\**" />
+    <None Remove="Operations\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0-release-20210626-04" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Humanizer.Core" Version="2.11.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.BenchmarkDotNet\DragonSpark.Application.Hosting.BenchmarkDotNet.csproj" />
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.Console\DragonSpark.Application.Hosting.Console.csproj" />
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.xUnit\DragonSpark.Application.Hosting.xUnit.csproj" />
+    <ProjectReference Include="..\DragonSpark.Composition\DragonSpark.Composition.csproj" />
+    <ProjectReference Include="..\DragonSpark.Testing.Environment.Development\DragonSpark.Testing.Environment.Development.csproj" />
+    <ProjectReference Include="..\DragonSpark.Testing.Environment\DragonSpark.Testing.Environment.csproj" />
+    <ProjectReference Include="..\DragonSpark.Testing.Objects\DragonSpark.Testing.Objects.csproj" />
+    <ProjectReference Include="..\DragonSpark\DragonSpark.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Compose\Extents\Validation\" />
+    <Folder Include="Model\Selection\Adapters\" />
+  </ItemGroup>
+</Project>

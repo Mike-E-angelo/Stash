@@ -1,0 +1,35 @@
+﻿@* ATTRIBUTION: https://stackoverflow.com/questions/59663743/how-to-inject-css-js-files-from-a-blazor-razor-class-library-to-asp-net-core-b *@
+<Evaluate>
+    let scripts = document.getElementsByTagName("script");
+    let exists = false;
+    let index = 0;
+    let source = '@Source';
+
+    while(index @("<") scripts.length && !exists)
+    {
+        exists = scripts[index].src.endsWith(source);
+        index++;
+    }
+
+    if(!exists) {
+        let tag = document.createElement('script');
+        @if (Tag != null)
+        {
+            @($"tag.setAttribute('{Tag.Value.Key}', '{Tag.Value.Value}');")
+        }
+        document.body.appendChild(Object.assign(tag, { src: source, type: '@Type' }));
+    }
+
+</Evaluate>
+
+@code {
+
+    [Parameter]
+    public string Source { get; set; } = default!;
+
+    [Parameter]
+    public string Type { get; set; } = "text/javascript";
+
+    [Parameter]
+    public KeyValuePair<string, string>? Tag { get; set; }
+}

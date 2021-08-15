@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0-release-20210626-04" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.Server.Testing.Environment.Development\DragonSpark.Application.Hosting.Server.Testing.Environment.Development.csproj" />
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.Server.Testing.Environment.Production\DragonSpark.Application.Hosting.Server.Testing.Environment.Production.csproj" />
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.Server.Testing.Environment\DragonSpark.Application.Hosting.Server.Testing.Environment.csproj" />
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.Server\DragonSpark.Application.Hosting.Server.csproj" />
+    <ProjectReference Include="..\DragonSpark.Application.Hosting.xUnit\DragonSpark.Application.Hosting.xUnit.csproj" />
+    <ProjectReference Include="..\DragonSpark.Testing.Server\DragonSpark.Testing.Server.csproj" />
+  </ItemGroup>
+
+</Project>
