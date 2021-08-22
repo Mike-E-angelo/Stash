@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCore.ScopedVsTransaction", "EfCore.ScopedVsTransaction\EfCore.ScopedVsTransaction.csproj", "{AD336D67-313F-456F-88CE-8469EAB7ADE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD336D67-313F-456F-88CE-8469EAB7ADE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD336D67-313F-456F-88CE-8469EAB7ADE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD336D67-313F-456F-88CE-8469EAB7ADE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD336D67-313F-456F-88CE-8469EAB7ADE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0240A0A5-B294-4628-98B7-16344E5C7B6D}
+	EndGlobalSection
+EndGlobal

@@ -196,3 +196,4 @@ ModelManifest.xml
 /AwaitPerformance/AwaitPerformance/BenchmarkDotNet.Artifacts/results
 
 .vs
+/EfCore.ScopedVsTransaction/EfCore.ScopedVsTransaction/BenchmarkDotNet.Artifacts/results
