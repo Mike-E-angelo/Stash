@@ -16,7 +16,7 @@ namespace EfCore.ScopedVsTransaction
 			: this(new DbContextOptionsBuilder<Context>().UseInMemoryDatabase(new Guid().ToString()).Options) {}
 
 		public SelectedBenchmarks(DbContextOptions<Context> options)
-			: this(options, new PooledDbContextFactory<Context>(options), Select.Default.Get(new Context(options).Subjects)) {}
+			: this(options, new PooledDbContextFactory<Context>(options), Select.Default.Get(new Context(options).Set<Subject>())) {}
 
 		public SelectedBenchmarks(DbContextOptions options, IDbContextFactory<Context> factory, IQueryable<Subject> subjects)
 		{
