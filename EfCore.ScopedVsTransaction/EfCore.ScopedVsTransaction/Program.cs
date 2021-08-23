@@ -2,6 +2,7 @@
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 
@@ -11,7 +12,7 @@ namespace EfCore.ScopedVsTransaction
 	{
 		static void Main(string[] args)
 		{
-			var config = DefaultConfig.Instance
+			var config = DefaultConfig.Instance.AddJob(Job.InProcessDontLogOutput)
 			                          .WithSummaryStyle(SummaryStyle.Default.WithRatioStyle(RatioStyle.Trend))
 			                          .AddDiagnoser(MemoryDiagnoser.Default)
 			                          .AddExporter(MarkdownExporter.GitHub);
