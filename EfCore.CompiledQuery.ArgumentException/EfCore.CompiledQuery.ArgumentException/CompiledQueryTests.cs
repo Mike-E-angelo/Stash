@@ -20,14 +20,13 @@ namespace EfCore.CompiledQuery.ArgumentException
 				await context.SaveChangesAsync();
 			}
 
-			var evaluate = new SubjectsNotTwo(new DbContexts<Context>(factory));
+			var append   = new Append<None, Subject>(q => q.Where(x => x.Name != "Two"));
+			var evaluate = new SubjectsNotTwo(new DbContexts<Context>(factory), append);
 			{
 				var results = await evaluate.Get(None.Default);
 				results.Should().HaveCount(2);
 				results.Select(x => x.Name).Should().BeEquivalentTo("One", "Three");
 			}
-
-
 		}
 
 
@@ -42,7 +41,8 @@ namespace EfCore.CompiledQuery.ArgumentException
 				await context.SaveChangesAsync();
 			}
 
-			var evaluate = new SubjectsNotTwo(new DbContexts<Context>(factory), Complex.Default);
+			var append   = new Append<None, Subject>((_, q) => q.Where(x => x.Name != "Two"));
+			var evaluate = new SubjectsNotTwo(new DbContexts<Context>(factory), append);
 			{
 				var results = await evaluate.Get(None.Default);
 				results.Should().HaveCount(2);
