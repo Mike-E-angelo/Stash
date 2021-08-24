@@ -1,6 +1,9 @@
 ﻿using EfCore.CompiledQuery.ArgumentException.Model;
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -8,7 +11,6 @@ namespace EfCore.CompiledQuery.ArgumentException
 {
 	public sealed class CompiledQueryTests
 	{
-
 		[Fact]
 		public async Task Works()
 		{
@@ -29,7 +31,6 @@ namespace EfCore.CompiledQuery.ArgumentException
 			}
 		}
 
-
 		[Fact]
 		public async Task DoesNotWork()
 		{
@@ -48,8 +49,34 @@ namespace EfCore.CompiledQuery.ArgumentException
 				results.Should().HaveCount(2);
 				results.Select(x => x.Name).Should().BeEquivalentTo("One", "Three");
 			}
-
-
 		}
+
+		[Fact]
+		public void WorksDirect()
+		{
+			Func<IQueryable<Subject>, IQueryable<Subject>> select = q => q.Where(x => x.Name != "Two");
+			var expression = Expression((context, @in) => select(context.Set<Subject>()));
+			var       compiled   = EF.CompileAsyncQuery(expression);
+			var       factory    = new InMemoryDbContexts<Context>();
+			using var instance   = factory.CreateDbContext();
+			compiled(instance, None.Default);
+		}
+
+		[Fact]
+		public void DoesNotWorkDirect()
+		{
+			Func<DbContext, IQueryable<Subject>, IQueryable<Subject>> select = (_, q) => q.Where(x => x.Name != "Two");
+			Func<DbContext, None, IQueryable<Subject>, IQueryable<Subject>> next =
+				(context, _, queryable) => select(context, queryable);
+
+			var       expression = Expression((context, @in) => next(context, @in, context.Set<Subject>()));
+			var       compiled   = EF.CompileAsyncQuery(expression);
+			var       factory    = new InMemoryDbContexts<Context>();
+			using var instance   = factory.CreateDbContext();
+			compiled(instance, None.Default);
+		}
+
+		Expression<Func<DbContext, None, IQueryable<Subject>>> Expression(
+			Expression<Func<DbContext, None, IQueryable<Subject>>> self) => self;
 	}
 }
