@@ -78,5 +78,22 @@ namespace EfCore.CompiledQuery.ArgumentException
 
 		Expression<Func<DbContext, None, IQueryable<Subject>>> Expression(
 			Expression<Func<DbContext, None, IQueryable<Subject>>> self) => self;
+
+		[Fact]
+		public void WorksDirectNoParameter()
+		{
+			Func<DbContext, IQueryable<Subject>, IQueryable<Subject>> select = (_, q) => q.Where(x => x.Name != "Two");
+			Func<DbContext, IQueryable<Subject>, IQueryable<Subject>> next =
+				(context, queryable) => select(context, queryable);
+
+			var       expression = ExpressionAlternate(context => next(context, context.Set<Subject>()));
+			var       compiled   = EF.CompileAsyncQuery(expression);
+			var       factory    = new InMemoryDbContexts<Context>();
+			using var instance   = factory.CreateDbContext();
+			compiled(instance);
+		}
+
+		Expression<Func<DbContext, IQueryable<Subject>>> ExpressionAlternate(
+			Expression<Func<DbContext, IQueryable<Subject>>> self) => self;
 	}
 }
