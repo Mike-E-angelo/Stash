@@ -44,7 +44,7 @@ namespace EfCore.CompiledQueries.ClientEvaluation
 			}
 
 			var evaluate = new SubjectsNotTwo(new DbContexts<Context>(_contexts));
-			await evaluate.Get(None.Default)
+			await evaluate.Get(None.Default);
 		}
 
 		public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
