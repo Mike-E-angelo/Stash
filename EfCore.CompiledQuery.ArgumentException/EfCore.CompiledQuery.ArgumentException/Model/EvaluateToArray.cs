@@ -9,4 +9,9 @@ namespace EfCore.CompiledQuery.ArgumentException.Model
 
 		public EvaluateToArray(IInvoke<TIn, T> invoke) : base(invoke) {}
 	}
+
+	public class EvaluateToArray<TIn, T> : Evaluate<TIn, T, T[]>
+	{
+		protected EvaluateToArray(IInvoke<TIn, T> invoke) : base(invoke, ToArray<T>.Default) {}
+	}
 }
