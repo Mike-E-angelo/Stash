@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyperlinq.SingleAsync", "Hyperlinq.SingleAsync\Hyperlinq.SingleAsync.csproj", "{D6AFDE69-22CD-4052-A459-AD4900BD0AF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6AFDE69-22CD-4052-A459-AD4900BD0AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6AFDE69-22CD-4052-A459-AD4900BD0AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6AFDE69-22CD-4052-A459-AD4900BD0AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6AFDE69-22CD-4052-A459-AD4900BD0AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {435C7718-EEC4-48F2-9263-70C54B988AC8}
+	EndGlobalSection
+EndGlobal
