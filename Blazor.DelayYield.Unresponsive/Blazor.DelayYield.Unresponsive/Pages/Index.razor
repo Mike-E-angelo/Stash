@@ -45,9 +45,9 @@ Welcome to your new app.
 	async Task<string> GetMessage()
 	{
 		await Task.Delay(1);
-	// This also breaks:
-	// await Task.Yield();
-	// The following line is never reached invoked via Refresh:
+		// This also breaks:
+		// await Task.Yield();
+		// The following line is never reached when invoked via Refresh:
 		return "Hello World!";
 	}
 
