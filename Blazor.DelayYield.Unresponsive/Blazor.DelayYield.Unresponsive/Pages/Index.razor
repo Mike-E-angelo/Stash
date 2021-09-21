@@ -28,21 +28,21 @@ Welcome to your new app.
 	protected override void OnInitialized()
 	{
 		base.OnInitialized();
-		Contents = new Resulting<string>(GetContent);
+		Contents = new HelloWorld(GetContent);
 	}
 
-	IResulting<string> Contents { get; set; } = default!;
+	HelloWorld Contents { get; set; } = default!;
 
 	void Refresh()
 	{
 		Counter++;
-		Contents = new Resulting<string>(GetContent);
+		Contents = new HelloWorld(GetContent);
 		StateHasChanged();
 	}
 
-	async Task<string> GetContent() => await GetMessage();
+	async Task<string?> GetContent() => await GetMessage();
 
-	async Task<string> GetMessage()
+	async Task<string?> GetMessage()
 	{
 		await Task.Delay(1);
 		// This also breaks:
