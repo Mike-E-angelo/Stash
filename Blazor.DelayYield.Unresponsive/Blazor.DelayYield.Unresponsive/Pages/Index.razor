@@ -1,0 +1,55 @@
+﻿@page "/"
+@using RazorClassLibrary1
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<OperationContentContainer Content="Contents">
+	Hello world: @context
+	<div>
+		@DateTime.Now.ToLongTimeString()
+	</div>
+	Counter: @Counter
+</OperationContentContainer>
+
+<button @onclick="@(Refresh)">
+	Click Me To Break
+</button>
+
+@code {
+
+	uint Counter { get; set; }
+
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		Contents = new Resulting<string>(GetContent);
+	}
+
+	IResulting<string> Contents { get; set; } = default!;
+
+	void Refresh()
+	{
+		Counter++;
+		Contents = new Resulting<string>(GetContent);
+		StateHasChanged();
+	}
+
+	async Task<string> GetContent() => await GetMessage();
+
+	async Task<string> GetMessage()
+	{
+		await Task.Delay(1);
+	// This also breaks:
+	// await Task.Yield();
+	// The following line is never reached invoked via Refresh:
+		return "Hello World!";
+	}
+
+
+}

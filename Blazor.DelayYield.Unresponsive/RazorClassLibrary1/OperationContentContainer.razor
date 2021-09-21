@@ -1,0 +1,96 @@
+﻿@typeparam T
+
+@inherits ActiveContentTemplateComponentBase<T>
+
+@if (Subject is null)
+{
+	@NotAssignedTemplate
+}
+else if (Subject is {IsFaulted : true })
+{
+	@ExceptionTemplate
+}
+else if (!Loaded)
+{
+	@LoadingTemplate
+}
+else if (Subject is {Result: not null})
+{
+	@ChildContent(Subject.Result)
+}
+else
+{
+	@NotAssignedTemplate
+}
+
+@code
+{
+	[Parameter]
+	public IResulting<T?>? Content
+	{
+		get => _content;
+		set
+		{
+			if (_content != value && value is not null)
+			{
+				_content = value;
+				Subject = null;
+			}
+		}
+	}	IResulting<T?>? _content;
+
+	Task<T?>? Subject { get; set; }
+
+	bool Loaded
+	{
+		get => _loaded;
+		set
+		{
+			if (_loaded != value)
+			{
+				_loaded = value;
+				if (value)
+				{
+					StateHasChanged();
+				}
+			}
+		}
+	}	bool _loaded;
+
+	protected override void OnParametersSet()
+	{
+		base.OnParametersSet();
+		Subject ??= DetermineSubject();
+		Update();
+	}
+
+	protected override Task OnParametersSetAsync() => Subject ?? base.OnParametersSetAsync();
+
+	Task<T?> DetermineSubject()
+	{
+		try
+		{
+			var content = Content ?? Defaulting<T>.Default;
+			var result = content.Get();
+			return result;
+		}
+		catch (Exception e)
+		{
+			// This is never reached.
+			Console.WriteLine(e);
+			throw;
+		}
+	}
+
+	protected override void OnAfterRender(bool firstRender)
+	{
+		base.OnAfterRender(firstRender);
+		Update();
+	}
+
+	void Update()
+	{
+		Loaded |= Subject is { IsCompletedSuccessfully: true };
+	}
+
+}
