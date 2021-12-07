@@ -1,0 +1,39 @@
+﻿@page "/"
+@inject IJSRuntime Runtime
+@*<SfButton Content="Change" OnClick="Change"></SfButton>*@
+<div class="required-container">
+    @switch(Mode)
+    {
+	    case "Desktop":
+		    <DataGrid Mode="DataGrid.DisplayMode.Default" />
+		    break;
+        case "Mobile":
+	        <div class="e-mobile-layout">
+			    <DataGrid Mode="DataGrid.DisplayMode.Adaptive" />
+		    </div>
+
+            break;
+    }
+</div>
+
+@code{
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var dotNetReference = DotNetObjectReference.Create(this);
+            Runtime.InvokeVoidAsync("resized", dotNetReference);
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+    string Mode { get; set; } = string.Empty;
+
+    [JSInvokable("Resized")]
+    public void Resized(string mode)
+    {
+        var stop = mode == "Desktop";
+        Mode = mode;
+        StateHasChanged();
+    }
+}
