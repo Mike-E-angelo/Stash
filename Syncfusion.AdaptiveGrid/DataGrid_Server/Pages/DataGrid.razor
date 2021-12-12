@@ -1,9 +1,9 @@
 ﻿<SfGrid DataSource="@Orders"
 	AllowFiltering="true"
-	Toolbar="@(new List<string> { "Search" })"
+	Toolbar="@(new List<string> { "Filter" })"
 	EnableAdaptiveUI="@(Mode == DisplayMode.Adaptive)"
 	RowRenderingMode="@(Mode == DisplayMode.Default ? RowDirection.Horizontal : RowDirection.Vertical)" AllowPaging="true" Height="315">
-	<GridFilterSettings Type="FilterType.Menu" />
+	<GridFilterSettings Type="FilterType.Excel" />
 	<GridColumns>
 		<GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" Width="120">
 			<Template>
@@ -12,7 +12,7 @@
 		</GridColumn>
 		<GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
 		<GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" Width="130"></GridColumn>
-		<GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" Width="120"></GridColumn>
+		<GridColumn Field=@nameof(Order.Freight) AllowFiltering="false" AllowSorting="false" HeaderText="Freight" Format="C2" Width="120"></GridColumn>
 	</GridColumns>
 </SfGrid>
 
