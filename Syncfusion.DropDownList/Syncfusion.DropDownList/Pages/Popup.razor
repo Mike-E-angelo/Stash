@@ -1,0 +1,21 @@
+﻿@using Radzen
+@using Radzen.Blazor
+@inject DialogService DialogService
+
+<h3>Popup</h3>
+
+<div class="col-md-4 p-3">
+	<RadzenCard>
+		<h4 class="mb-4">Inline Dialog</h4>
+		<RadzenButton Text="Dialog with inline Blazor content" ButtonStyle="ButtonStyle.Secondary" Click=@ShowInlineDialog />
+	</RadzenCard>
+</div>
+
+@code {
+	[Parameter]
+	public RenderFragment<DialogService> ChildContent { get; set; }
+
+	Task ShowInlineDialog() => DialogService.OpenAsync("Simple Dialog", ChildContent);
+
+
+}

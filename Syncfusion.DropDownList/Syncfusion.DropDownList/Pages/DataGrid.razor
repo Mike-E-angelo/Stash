@@ -1,0 +1,74 @@
+﻿<SfGrid DataSource="@Orders"
+	AllowFiltering="true"
+	AllowSorting="true"
+	Toolbar="@(new List<string> { "Filter" })"
+	EnableAdaptiveUI="@(Mode == DisplayMode.Adaptive)"
+	RowRenderingMode="@(Mode == DisplayMode.Default ? RowDirection.Horizontal : RowDirection.Vertical)" AllowPaging="true" Height="315">
+	<GridFilterSettings Type="FilterType.Excel" />
+	<GridColumns>
+		<GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" Width="120">
+			<Template>
+				@(((Order)context).OrderID)
+			</Template>
+		</GridColumn>
+		<GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+		<GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" Width="130"></GridColumn>
+		<GridColumn Field=@nameof(Order.Freight) AllowFiltering="false" AllowSorting="false" HeaderText="Freight" Format="C2" Width="120"></GridColumn>
+	</GridColumns>
+</SfGrid>
+
+@code{
+
+	public enum DisplayMode
+	{
+		Default,
+        Adaptive
+	}
+
+    [Parameter]
+	public DisplayMode Mode
+	{
+		get => _mode;
+		set
+		{
+			if (_mode != value)
+			{
+				_mode = value;
+
+			}
+		}
+	}	DisplayMode _mode = DisplayMode.Default;
+
+    List<Order> Orders { get; set; }
+
+    /*protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            canchange = true;
+            StateHasChanged();
+        }
+    }*/
+
+    protected override void OnInitialized()
+    {
+	    var random = new Random();
+        Orders = Enumerable.Range(1, 75)
+                           .Select(x => new Order
+                           {
+	                           OrderID = 1000 + x,
+	                           CustomerID = new[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" }[random.Next(5)],
+	                           Freight = 2.1 * x,
+	                           OrderDate = new[] { new DateTime(2010, 5, 1), new DateTime(2010, 5, 2), new DateTime(2010, 5, 3), }[random.Next(3)],
+                           }).ToList();
+    }
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+    }
+
+}
