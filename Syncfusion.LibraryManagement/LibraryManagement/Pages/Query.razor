@@ -1,0 +1,61 @@
+﻿@page "/query"
+
+<PageTitle>Page</PageTitle>
+
+@using LibraryManagement.Models
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@inject ILibraryService LibraryService
+@using Syncfusion.Blazor.Grids
+  
+<SfGrid TValue="Book" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })"
+    AllowPaging="true" AllowFiltering="true">
+    <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Normal"></GridEditSettings>
+    <GridPageSettings PageSize="2" />
+    <Syncfusion.Blazor.Data.SfDataManager Adaptor="Adaptors.CustomAdaptor">
+        <LibraryManagement.Shared.DataRequestCallbackAdaptor />
+    </Syncfusion.Blazor.Data.SfDataManager>
+    <GridColumns>
+        <GridColumn Field="@nameof(Book.Id)" IsPrimaryKey="true" IsIdentity="true" Visible="false"></GridColumn>
+        <GridColumn Field="@nameof(Book.Name)" Width="150"></GridColumn>
+        <GridColumn Field="@nameof(Book.Author)" Width="150"></GridColumn>
+        <GridColumn Field="@nameof(Book.Quantity)" Width="90" TextAlign="TextAlign.Right"></GridColumn>
+        <GridColumn Field="@nameof(Book.Price)" Width="90" Format="C2" TextAlign="TextAlign.Right"></GridColumn>
+        <GridColumn Field="@nameof(Book.Available)" DisplayAsCheckBox="true" Width="70"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code
+{
+    protected override void OnInitialized()
+    {
+    }
+
+    public void ActionBeginHandler(ActionEventArgs<Book> Args)
+    {
+        //Will be triggered when CRUD action is initiated
+        if (Args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        {
+            if (Args.Action == "Add")
+            {
+                // Insert the changes into your database here.
+                LibraryService.InsertBook(Args.Data);
+            }
+        }
+
+        if (Args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        {
+            if (Args.Action == "Edit")
+            {
+                //Update the changes into your database here.
+                LibraryService.UpdateBook(Args.Data.Id, Args.Data);
+            }
+        }
+
+        if (Args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Delete))
+        {
+            //Remove the record from your database
+            LibraryService.DeleteBook(Args.Data.Id);
+        }
+    }
+}

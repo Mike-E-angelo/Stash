@@ -1,0 +1,26 @@
+﻿@inherits DataAdaptor
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using LibraryManagement.Models
+@using Microsoft.EntityFrameworkCore
+
+@code {
+
+    [Inject]
+    public ILibraryService Service { get; set; }
+
+    public override async Task<object> ReadAsync(DataManagerRequest dataManagerRequest, string key = null)
+    {
+        var queryable = Service.GetBooks().OrderBy(x => x.Id);
+        var skipped = dataManagerRequest.Skip != default ? queryable.Skip(dataManagerRequest.Skip) : queryable;
+        var books = skipped.Take(dataManagerRequest.Take);
+        var enumerable = await books.ToArrayAsync();
+        var longCountAsync = (int)await queryable.LongCountAsync();
+        return dataManagerRequest.RequiresCounts ? new DataResult
+        {
+            Result = enumerable, Count = longCountAsync
+        } : (object)books;
+		    
+    }
+
+}

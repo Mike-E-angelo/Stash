@@ -1,0 +1,64 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+@using LibraryManagement.Models
+@inject ILibraryService LibraryService
+@using Syncfusion.Blazor.Grids
+  
+<SfGrid DataSource="@LibraryBooks" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })" TValue="Book">
+    <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Normal"></GridEditSettings>
+    <GridEvents OnActionBegin="ActionBeginHandler" OnActionComplete="ActionCompleteHandler" TValue="Book"></GridEvents>
+    <GridColumns>
+        <GridColumn Field="@nameof(Book.Id)" IsPrimaryKey="true" IsIdentity="true" Visible="false"></GridColumn>
+        <GridColumn Field="@nameof(Book.Name)" Width="150"></GridColumn>
+        <GridColumn Field="@nameof(Book.Author)" Width="150"></GridColumn>
+        <GridColumn Field="@nameof(Book.Quantity)" Width="90" TextAlign="TextAlign.Right"></GridColumn>
+        <GridColumn Field="@nameof(Book.Price)" Width="90" Format="C2" TextAlign="TextAlign.Right"></GridColumn>
+        <GridColumn Field="@nameof(Book.Available)" DisplayAsCheckBox="true" Width="70"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code
+{
+    public IEnumerable<Book> LibraryBooks { get; set; }
+    protected override void OnInitialized()
+    {
+        LibraryBooks = LibraryService.GetBooks();
+    }
+    public void ActionBeginHandler(ActionEventArgs<Book> Args)
+    {
+        //Will be triggered when CRUD action is initiated
+        if (Args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        {
+            if (Args.Action == "Add")
+            {
+                // Insert the changes into your database here.
+                LibraryService.InsertBook(Args.Data);
+            }
+        }
+
+        if (Args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        {
+            if (Args.Action == "Edit")
+            {
+                //Update the changes into your database here.
+                LibraryService.UpdateBook(Args.Data.Id, Args.Data);
+            }
+        }
+
+        if (Args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Delete))
+        {
+            //Remove the record from your database
+            LibraryService.DeleteBook(Args.Data.Id);
+        }
+    }
+    public void ActionCompleteHandler(ActionEventArgs<Book> Args)
+    {
+        //will be triggered when CRUD action is complete.
+        if (Args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        {
+            LibraryBooks = LibraryService.GetBooks(); //to fetch the updated data from db to Grid
+        }
+    }
+}
