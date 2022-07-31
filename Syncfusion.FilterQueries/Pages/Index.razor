@@ -1,0 +1,63 @@
+﻿@page "/"
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids
+@using EFGrid.Shared.DataAccess;
+@using EFGrid.Shared.Models;
+@using FilterType = Syncfusion.Blazor.Grids.FilterType
+
+<SfGrid TValue="Order" ID="Grid" AllowSorting="true" AllowFiltering="true" AllowPaging="true">
+    <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
+    <GridPageSettings PageSize="8"></GridPageSettings>
+    <GridFilterSettings Type="FilterType.Excel" />
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" IsPrimaryKey="true" TextAlign="@TextAlign.Center" Width="140"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" AllowFiltering="true" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Width="150">
+        </GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    // Implementing custom adaptor by extending the DataAdaptor class
+    public class CustomAdaptor : DataAdaptor
+    {
+        OrderDataAccessLayer db = new OrderDataAccessLayer();
+
+        public CustomAdaptor()
+        {
+        }
+        public override object Read(DataManagerRequest dm, string key = null)
+        {
+
+            IEnumerable<Order> DataSource = db.GetAllOrders();
+            if (dm.Search != null && dm.Search.Count > 0)
+            {
+                // Searching
+                DataSource = DataOperations.PerformSearching(DataSource, dm.Search);
+            }
+            if (dm.Sorted != null && dm.Sorted.Count > 0)
+            {
+                // Sorting
+                DataSource = DataOperations.PerformSorting(DataSource, dm.Sorted);
+            }
+            if (dm.Where != null && dm.Where.Count > 0)
+            {
+                // Filtering
+                DataSource = DataOperations.PerformFiltering(DataSource, dm.Where, dm.Where[0].Operator);
+            }
+            int count = DataSource.AsQueryable().Count();
+            if (dm.Skip != 0)
+            {
+                //Paging
+                DataSource = DataOperations.PerformSkip(DataSource, dm.Skip);
+            }
+            if (dm.Take != 0)
+            {
+                DataSource = DataOperations.PerformTake(DataSource, dm.Take);
+            }
+            IEnumerable<Order> ResponseDataSource = DataSource.ToList();
+            return dm.RequiresCounts ? new DataResult() { Result = ResponseDataSource, Count = count } : (object)DataSource;
+        }
+    }
+}
