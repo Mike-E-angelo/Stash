@@ -9,11 +9,10 @@
 
 <SfGrid TValue="Order" @ref="_subject" ID="Grid" AllowSorting="true" AllowFiltering="true" AllowPaging="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })"
         class="@Class" @attributes="@AdditionalAttributes"
-        ClipMode="@ClipMode.EllipsisWithTooltip"
->
+        ClipMode="@ClipMode.EllipsisWithTooltip">
     <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
     <GridPageSettings PageSize="8"></GridPageSettings>
-    <GridFilterSettings Type="FilterType.Excel" />
+    <GridFilterSettings Type="FilterType.Excel"/>
     <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
     <GridColumns>
         <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" IsPrimaryKey="true"></GridColumn>
@@ -27,9 +26,7 @@
 
     string? Class
     {
-        get {
-            return null;
-        }
+        get { return null; }
     }
 
     [Parameter(CaptureUnmatchedValues = true)]
@@ -38,34 +35,29 @@
     // Implementing custom adaptor by extending the DataAdaptor class
     public class CustomAdaptor : DataAdaptor
     {
-        OrderDataAccessLayer db = new OrderDataAccessLayer();
+        readonly OrderDataAccessLayer db = new ();
 
-        public CustomAdaptor()
-        {
-        }
-        public override object Read(DataManagerRequest dm, string key = null)
+        public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
         {
             Debug.WriteLine($"{nameof(CustomAdaptor)}.{nameof(Read)}");
+
+            await Task.Delay(1000);
             IEnumerable<Order> DataSource = db.GetAllOrders();
-            if (dm.Search != null && dm.Search.Count > 0)
+            if (dm.Search is {Count: > 0})
             {
-                // Searching
                 DataSource = DataOperations.PerformSearching(DataSource, dm.Search);
             }
-            if (dm.Sorted != null && dm.Sorted.Count > 0)
+            if (dm.Sorted is {Count: > 0})
             {
-                // Sorting
                 DataSource = DataOperations.PerformSorting(DataSource, dm.Sorted);
             }
-            if (dm.Where != null && dm.Where.Count > 0)
+            if (dm.Where is {Count: > 0})
             {
-                // Filtering
                 DataSource = DataOperations.PerformFiltering(DataSource, dm.Where, dm.Where[0].Operator);
             }
             int count = DataSource.AsQueryable().Count();
             if (dm.Skip != 0)
             {
-                //Paging
                 DataSource = DataOperations.PerformSkip(DataSource, dm.Skip);
             }
             if (dm.Take != 0)
