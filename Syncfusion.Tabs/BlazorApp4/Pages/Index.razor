@@ -1,0 +1,126 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.Navigations
+
+<PageTitle>Index</PageTitle>
+
+<Syncfusion.Blazor.Buttons.SfButton CssClass="button small" type="button" OnClick="@OnClick">Click Me</Syncfusion.Blazor.Buttons.SfButton>
+
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+
+<h1>Hello, world!</h1>
+<SfTab CssClass="default-tab e-fill" SelectedItem="_index">
+    <TabItems>
+        <TabItem>
+            <ChildContent>
+                <TabHeader Text="First"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem>
+            <ChildContent>
+                <TabHeader Text="Second"></TabHeader>
+            </ChildContent>
+            
+        </TabItem>
+        <TabItem>
+            <ChildContent>
+                <TabHeader Text="Third"></TabHeader>
+            </ChildContent>
+        </TabItem>
+    </TabItems>
+</SfTab>
+
+
+@code {
+    int _index;
+    Task OnClick()
+    {
+        _index = 1;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+}
