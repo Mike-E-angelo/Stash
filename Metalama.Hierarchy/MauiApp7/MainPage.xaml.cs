@@ -4,7 +4,7 @@
     {
         int count = 0;
 
-        public MainPage(MainModel model) : base(model)
+        public MainPage(MainModelHierarchy model) : base(model)
         {
             InitializeComponent();
         }

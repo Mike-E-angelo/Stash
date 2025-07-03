@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<model:ContentPage x:TypeArguments="mauiApp7:MainModel" xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<model:ContentPage x:TypeArguments="mauiApp7:MainModelHierarchy" xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                    xmlns:model="clr-namespace:Aspects.Model;assembly=Aspects"
                    xmlns:mauiApp7="clr-namespace:MauiApp7"
                    x:Class="MauiApp7.MainPage"
-                   x:DataType="mauiApp7:MainModel">
+                   x:DataType="mauiApp7:MainModelHierarchy">
     <ContentPage.Behaviors>
         <model:EventToCommandBehavior
-            x:DataType="mauiApp7:MainModel" EventName="NavigatedTo" Command="{Binding InitializeCommand}" />
+            x:DataType="mauiApp7:MainModelHierarchy" EventName="NavigatedTo" Command="{Binding InitializeCommand}" />
     </ContentPage.Behaviors>
     <ScrollView>
         <VerticalStackLayout
