@@ -1,0 +1,75 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Blazor Circuit Deadlock Demo</PageTitle>
+
+<h1>Blazor Circuit Deadlock Demo</h1>
+
+<p>
+    This page demonstrates a silent circuit freeze when reading a large payload from
+    <code>localStorage</code> that exceeds the SignalR inbound message size limit (<code>MaximumReceiveMessageSize</code>).
+</p>
+
+<div class="alert alert-warning">
+    <strong>Note:</strong> To prevent the setup phase from killing the circuit, Step 1 uses pure client-side JavaScript
+    to generate and save the payload. This isolates the deadlock purely to Blazor's inbound read operation.
+</div>
+
+<div class="mb-3 d-flex gap-2">
+    <button class="btn btn-primary" onclick="generateAndSaveClientSide()">
+        1. [JS] Save ~35KB Data Client-Side
+    </button>
+
+    <button class="btn btn-warning" @onclick="ReadLargeData">
+        2. [Blazor] Read Data (Triggers Deadlock)
+    </button>
+
+    <button class="btn btn-danger" onclick="clearStorageClientSide()">
+        Reset / Clear LocalStorage
+    </button>
+</div>
+
+@if (!string.IsNullOrEmpty(_statusMessage))
+{
+    <div class="alert alert-info mt-3">
+        @_statusMessage
+    </div>
+}
+
+@code {
+    private const string StorageKey = "deadlock_demo_key";
+    private string _statusMessage = "Ready. Click step 1 to prepare the payload in the browser.";
+
+    private async Task ReadLargeData()
+    {
+        _statusMessage = "Attempting to read from localStorage... (Circuit will freeze now with zero indication or warning)";
+        StateHasChanged();
+
+        // This call sends the 35KB string back up the SignalR circuit.
+        // Because it exceeds MaximumReceiveMessageSize, the circuit silently deadlocks.
+        var retrievedData = await JSRuntime.InvokeAsync<string>("localStorage.getItem", StorageKey);
+
+        // This line and any subsequent server-side UI updates will never be reached.
+        _statusMessage = $"Success? Retrieved {retrievedData?.Length ?? 0} characters.";
+    }
+}
+
+@* Using standard HTML script tags here keeps the reproduction self-contained in a single file
+  for the GitHub issue report.
+*@
+<script>
+    const STORAGE_KEY = "deadlock_demo_key";
+
+    function generateAndSaveClientSide() {
+        // Generate ~35KB string purely in the browser to protect the SignalR circuit during setup
+        const largeString = 'A'.repeat(35 * 1024);
+        localStorage.setItem(STORAGE_KEY, largeString);
+        alert("Payload successfully saved to localStorage via client-side JS. The SignalR circuit is still alive. Ready for Step 2!");
+    }
+
+    function clearStorageClientSide() {
+        localStorage.removeItem(STORAGE_KEY);
+        alert("LocalStorage cleared! (Note: If the circuit already froze, you will need to refresh the page after clearing).");
+    }
+</script>
