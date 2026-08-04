@@ -1,3 +1,3 @@
 <Solution>
-  <Project Path="Sentry.Samples.AspNetCore.Serilog.csproj" />
+  <Project Path="Samples.AspNetCore.Serilog.csproj" />
 </Solution>

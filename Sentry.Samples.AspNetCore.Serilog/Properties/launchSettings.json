@@ -9,14 +9,14 @@
   },
   "profiles": {
     "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "throw",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "commandName": "IISExpress",
+        "launchBrowser": true,
+        "launchUrl": "greetings",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
     },
-    "Sentry.Samples.AspNetCore.Serilog": {
+    "Samples.AspNetCore.Serilog": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -5,9 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sentry.AspNetCore" Version="6.5.0" />
-    <PackageReference Include="Sentry.Serilog" Version="6.5.0" />
-    <PackageReference Include="Serilog" Version="4.3.1" />
+    <Compile Remove="_ReSharper.Caches\**" />
+    <Content Remove="_ReSharper.Caches\**" />
+    <EmbeddedResource Remove="_ReSharper.Caches\**" />
+    <None Remove="_ReSharper.Caches\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sentry.AspNetCore" Version="6.7.0" />
+    <PackageReference Include="Sentry.Serilog" Version="6.7.0" />
+    <PackageReference Include="Serilog" Version="4.4.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
   </ItemGroup>
